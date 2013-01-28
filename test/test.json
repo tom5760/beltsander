@@ -1,0 +1,53 @@
+{
+    'title': 'Test Script',
+    'author': 'tjkopena',
+    'tests': [{
+        'id': 'test0',
+        'description': '
+            Should say "Hello World!"
+
+            (this test should pass)',
+        'command': 'echo "Hello World"',
+        'pass': {
+            'contains': 'Hello',
+            'returncode': 0,
+        }
+    }, {
+        'id': 'test1',
+        'description': '
+            Should not say "Hello World!"
+
+            (this test should fail, and therefore if it fails it passes)',
+        'command': 'echo "Hello World"',
+        'expected': 'fail',
+        'fail': {
+            'contains': 'Hello',
+        }
+    }, {
+        'id': 'test2',
+        'description': '
+            Should say "Hello World!"
+            
+            (this test should pass)',
+        'command': 'cat',
+        'input': 'Hello World!',
+        'pass': {
+            'contains': 'Hello',
+        }
+    }, {
+        'id': 'test3',
+        'description': '
+            Should say "Hello World!" 
+
+            (this test should fail and therefore pass)',
+        'command': 'cat',
+        'input': 'Hello World!',
+        'expected': 'fail',
+        'pass': {
+            'contains': 'Mushi',
+        },
+        'fail': {
+            'contains': 'Hello',
+        }
+    }],
+}
